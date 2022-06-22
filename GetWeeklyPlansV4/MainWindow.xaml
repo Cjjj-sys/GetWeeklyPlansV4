@@ -1,0 +1,46 @@
+﻿<Window x:Class="GetWeeklyPlansV4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GetWeeklyPlansV4"
+        mc:Ignorable="d"
+        Title="GetWeeklyPlanV4 By:KangKang 20220622" Height="450" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <materialDesign:Card Grid.Row="0" Padding="1">
+            <Button Style="{DynamicResource MaterialDesignRaisedButton}" Click="Refresh">
+                刷新
+            </Button>
+        </materialDesign:Card>
+        <ListBox Name="ListBoxWeeklyPlans" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="local:WeeklyPlanInfo">
+                    <materialDesign:Card Margin="-5">
+                                <Grid>
+                                    <TextBlock Margin="3,2,0,0" Style="{DynamicResource MaterialDesignTextBlock}"
+                                           Text="{Binding Title}"></TextBlock>
+                                    <Button HorizontalAlignment="Right"
+                                            Style="{DynamicResource MaterialDesignRaisedButton}"
+                                            Tag="{Binding }"
+                                            Click="Download"
+                                            Content="下载">
+                                    </Button>
+                                </Grid>
+                    </materialDesign:Card>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
